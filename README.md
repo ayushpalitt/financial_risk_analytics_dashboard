@@ -185,7 +185,7 @@ npm run dev -- --hostname 127.0.0.1 --port 3000
 
 ### Portfolio Command Center
 
-![Portfolio Command Center](docs/assets/screenshots/dashboard-command-center.png)
+![Portfolio Command Center](docs/assets/screenshots/portfolio-command-center.png)
 
 ### Transaction Monitoring
 
