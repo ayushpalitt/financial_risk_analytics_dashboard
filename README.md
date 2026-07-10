@@ -1,5 +1,7 @@
 # Financial Risk Analytics Dashboard
 
+🚀 **Live Application:** [https://financial-risk-analytics-dashboard.vercel.app](https://financial-risk-analytics-dashboard.vercel.app)
+
 Enterprise analytics platform for credit card fraud risk, revenue monitoring, customer analysis, machine learning performance tracking, and AI-assisted executive reporting.
 
 The project uses the Kaggle Credit Card Fraud Detection dataset as the raw source file. The original dataset is stored at `data/raw/creditcard.csv` and must remain unchanged. All transformations are written to `data/processed/`.
