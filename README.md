@@ -38,6 +38,8 @@ This repository has completed the setup, data organization, ETL, database, and m
 - Prediction export path: `data/exports/fraud_predictions.csv`.
 - FastAPI backend package added under `backend/`.
 - Backend API docs: `http://localhost:8000/docs`.
+- Next.js dashboard added under `frontend/`.
+- Frontend app URL: `http://localhost:3000`.
 
 ## Planned Features
 
@@ -148,7 +150,13 @@ python scripts/load_fraud_predictions_to_postgres.py
 uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Frontend commands will be added as that production module is implemented.
+10. Run the Next.js dashboard:
+
+```bash
+cd frontend
+npm install
+npm run dev -- --hostname 127.0.0.1 --port 3000
+```
 
 ## Screenshots
 

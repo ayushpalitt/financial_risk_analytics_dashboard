@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #080b10;
+  --foreground: #e7edf6;
+  --muted: #8e9aad;
+  --panel: #101620;
+  --panel-strong: #151d2a;
+  --border: #243040;
+  --teal: #19c2a6;
+  --amber: #f4b740;
+  --rose: #ef5f7a;
+  --violet: #9b8cff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(25, 194, 166, 0.08), transparent 32rem),
+    linear-gradient(135deg, rgba(155, 140, 255, 0.08), transparent 36rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(25, 194, 166, 0.32);
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #9aa8ba;
+}
+
+.recharts-legend-item-text {
+  color: #c6d1e1 !important;
+}
