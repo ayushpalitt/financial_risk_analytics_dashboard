@@ -1,4 +1,21 @@
 services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: financial-risk-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://risk_admin:change_me_locally@postgres:5432/financial_risk
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.5}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   postgres:
     image: postgres:16-alpine
     container_name: financial-risk-postgres

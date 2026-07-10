@@ -36,6 +36,8 @@ This repository has completed the setup, data organization, ETL, database, and m
 - Model artifact path: `ml/models/fraud_model.pkl`.
 - Model metrics path: `ml/reports/model_performance.json`.
 - Prediction export path: `data/exports/fraud_predictions.csv`.
+- FastAPI backend package added under `backend/`.
+- Backend API docs: `http://localhost:8000/docs`.
 
 ## Planned Features
 
@@ -140,7 +142,13 @@ python -m ml
 python scripts/load_fraud_predictions_to_postgres.py
 ```
 
-Backend and frontend commands will be added as those production modules are implemented.
+9. Run the FastAPI backend:
+
+```bash
+uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Frontend commands will be added as that production module is implemented.
 
 ## Screenshots
 
