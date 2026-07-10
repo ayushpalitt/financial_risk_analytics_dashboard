@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from typing import Iterable
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 from backend.app.core.config import get_settings
 from backend.app.db.session import normalize_database_url
@@ -38,7 +38,7 @@ def bootstrap_database(
             for sql_file in sql_files:
                 if not sql_file.exists():
                     raise FileNotFoundError(f"Bootstrap SQL file not found: {sql_file}")
-                connection.exec_driver_sql(sql_file.read_text(encoding="utf-8"))
+                connection.execute(text(sql_file.read_text(encoding="utf-8")))
                 applied_files.append(sql_file)
     finally:
         engine.dispose()
