@@ -13,11 +13,15 @@ from backend.app.core.config import get_settings
 def normalize_database_url(database_url: str) -> str:
     """Normalize SQLAlchemy driver aliases to an installed psycopg2 URL."""
 
-    return (
-        database_url.replace("postgresql+psycopg://", "postgresql+psycopg2://")
-        if database_url.startswith("postgresql+psycopg://")
-        else database_url
-    )
+    if database_url.startswith("postgres://"):
+        return database_url.replace("postgres://", "postgresql+psycopg2://", 1)
+    if database_url.startswith("postgresql+psycopg://"):
+        return database_url.replace(
+            "postgresql+psycopg://",
+            "postgresql+psycopg2://",
+            1,
+        )
+    return database_url
 
 
 @lru_cache(maxsize=1)

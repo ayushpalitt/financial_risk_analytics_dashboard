@@ -11,7 +11,12 @@ import {
 } from "recharts";
 
 import type { CustomerSegmentPoint, MerchantCategoryPoint } from "@/lib/types";
-import { formatCurrency } from "@/lib/utils";
+import {
+  formatCompactCurrency,
+  formatCompactNumber,
+  formatCurrency,
+  truncateChartLabel,
+} from "@/lib/utils";
 
 export function CategoryBarChart({
   data,
@@ -26,21 +31,30 @@ export function CategoryBarChart({
 }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data} margin={{ left: 0, right: 16, top: 10, bottom: 0 }}>
+      <BarChart data={data} margin={{ left: 12, right: 24, top: 12, bottom: 22 }}>
         <CartesianGrid stroke="#223044" vertical={false} />
         <XAxis
           dataKey={labelKey}
           tickLine={false}
           axisLine={false}
           interval={0}
-          height={70}
-          tick={{ fontSize: 11 }}
+          height={74}
+          tickMargin={12}
+          angle={-24}
+          textAnchor="end"
+          tick={{ fill: "#8fa0b5", fontSize: 11 }}
+          tickFormatter={(value: string) => truncateChartLabel(value)}
         />
         <YAxis
+          width={78}
           tickLine={false}
           axisLine={false}
+          tickMargin={8}
+          tick={{ fill: "#8fa0b5", fontSize: 12 }}
           tickFormatter={(value: number) =>
-            valueKey === "transactions" ? `${Math.round(value / 1000)}k` : formatCurrency(value)
+            valueKey === "transactions"
+              ? formatCompactNumber(value)
+              : formatCompactCurrency(value)
           }
         />
         <Tooltip

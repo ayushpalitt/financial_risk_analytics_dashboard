@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: financial-risk-api
+    env: docker
+    dockerContext: .
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://financial-risk-analytics-dashboard.vercel.app,http://localhost:3000
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.5
+      - key: AI_REPORTS_ENABLED
+        value: true

@@ -43,6 +43,8 @@ def default_database_url() -> str:
 
 
 def normalize_database_url(database_url: str) -> str:
+    if database_url.startswith("postgres://"):
+        return database_url.replace("postgres://", "postgresql://", 1)
     return (
         database_url.replace("postgresql+psycopg://", "postgresql://")
         .replace("postgresql+psycopg2://", "postgresql://")

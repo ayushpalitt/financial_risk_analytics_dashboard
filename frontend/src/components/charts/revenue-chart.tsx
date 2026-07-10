@@ -11,14 +11,18 @@ import {
 } from "recharts";
 
 import type { RevenueTrendPoint } from "@/lib/types";
-import { formatCurrency } from "@/lib/utils";
+import {
+  formatChartDate,
+  formatCompactCurrency,
+  formatCurrency,
+} from "@/lib/utils";
 
 export function RevenueChart({ data }: { data: RevenueTrendPoint[] }) {
   const ordered = [...data].reverse();
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <AreaChart data={ordered} margin={{ left: 0, right: 16, top: 10, bottom: 0 }}>
+      <AreaChart data={ordered} margin={{ left: 12, right: 24, top: 12, bottom: 18 }}>
         <defs>
           <linearGradient id="revenue" x1="0" x2="0" y1="0" y2="1">
             <stop offset="5%" stopColor="#19c2a6" stopOpacity={0.45} />
@@ -26,8 +30,22 @@ export function RevenueChart({ data }: { data: RevenueTrendPoint[] }) {
           </linearGradient>
         </defs>
         <CartesianGrid stroke="#223044" vertical={false} />
-        <XAxis dataKey="metric_date" tickLine={false} axisLine={false} />
-        <YAxis tickLine={false} axisLine={false} tickFormatter={formatCurrency} />
+        <XAxis
+          dataKey="metric_date"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={10}
+          tick={{ fill: "#8fa0b5", fontSize: 12 }}
+          tickFormatter={formatChartDate}
+        />
+        <YAxis
+          width={78}
+          tickLine={false}
+          axisLine={false}
+          tickMargin={8}
+          tick={{ fill: "#8fa0b5", fontSize: 12 }}
+          tickFormatter={formatCompactCurrency}
+        />
         <Tooltip
           cursor={{ stroke: "#334155" }}
           contentStyle={{

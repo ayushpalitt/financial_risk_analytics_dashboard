@@ -11,17 +11,31 @@ import {
 } from "recharts";
 
 import type { FraudTrendPoint } from "@/lib/types";
-import { formatPercent } from "@/lib/utils";
+import { formatChartDate, formatPercent } from "@/lib/utils";
 
 export function FraudTrendChart({ data }: { data: FraudTrendPoint[] }) {
   const ordered = [...data].reverse();
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={ordered} margin={{ left: 0, right: 16, top: 10, bottom: 0 }}>
+      <LineChart data={ordered} margin={{ left: 12, right: 24, top: 12, bottom: 18 }}>
         <CartesianGrid stroke="#223044" vertical={false} />
-        <XAxis dataKey="metric_date" tickLine={false} axisLine={false} />
-        <YAxis tickLine={false} axisLine={false} tickFormatter={formatPercent} />
+        <XAxis
+          dataKey="metric_date"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={10}
+          tick={{ fill: "#8fa0b5", fontSize: 12 }}
+          tickFormatter={formatChartDate}
+        />
+        <YAxis
+          width={64}
+          tickLine={false}
+          axisLine={false}
+          tickMargin={8}
+          tick={{ fill: "#8fa0b5", fontSize: 12 }}
+          tickFormatter={formatPercent}
+        />
         <Tooltip
           cursor={{ stroke: "#334155" }}
           contentStyle={{

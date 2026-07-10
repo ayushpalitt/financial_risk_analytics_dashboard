@@ -49,8 +49,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
+                scroll
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex h-11 items-center gap-3 rounded-md px-3 text-sm font-medium text-[#9aa8ba] transition",
+                  "flex h-11 cursor-pointer items-center gap-3 rounded-md px-3 text-sm font-medium text-[#9aa8ba] transition",
                   active
                     ? "border border-[#19c2a6]/30 bg-[#172436] text-[#edf4ff]"
                     : "hover:bg-[#111a27] hover:text-[#dce6f5]",
@@ -73,8 +75,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
+                scroll
+                aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex h-10 shrink-0 items-center gap-2 rounded-md border px-3 text-xs font-medium",
+                  "flex h-10 shrink-0 cursor-pointer items-center gap-2 rounded-md border px-3 text-xs font-medium",
                   active
                     ? "border-[#19c2a6]/45 bg-[#172436] text-[#edf4ff]"
                     : "border-[#253246] bg-[#101620] text-[#9aa8ba]",
